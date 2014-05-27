@@ -1,0 +1,33 @@
+#include<cstdio>
+#include<cstring>
+#include<cmath>
+int x[510],y[510];
+double dis[510][510];
+double cal(int a,int b,int c,int d)
+{
+	return  sqrt((a-c)*(a-c)+(b-d)*(b-d));
+}
+int find(int a,int *fx)
+{
+	return fx[a]==a?a:fx[a]=find(fx[a]);
+}
+main()
+{
+	int T;
+	scanf("%d",&T);
+	while (T--)
+	{
+		int S,N;
+		scanf("%d",&S);
+		for (int i=0;i<N;i++)
+		{
+			scanf("%d%d",&x[i],&y[i]);	
+			int fx[i]=i;
+		}
+		for (int i=0;i<N;i++)
+		for (int j=0;j<N;j++)
+			dis[i][j]=cal(x[i],y[i],x[j],y[j]);		
+		solve(dis,N,S);
+	}
+	return 0;
+}
